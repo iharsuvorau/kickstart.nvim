@@ -887,7 +887,11 @@ require('lazy').setup({
       -- cursor location to LINE:COLUMN
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function()
-        return '%2l:%-2v'
+        local line = vim.fn.line '.'
+        local total_lines = vim.fn.line '$'
+        local percentage = math.floor(line / total_lines * 100)
+        return string.format('%%2l:%%-2v %3d%%%%', percentage)
+        --return '%2l:%-2v'
       end
 
       -- ... and there is more!
