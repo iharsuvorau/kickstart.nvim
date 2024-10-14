@@ -583,6 +583,9 @@ require('lazy').setup({
             },
           },
         },
+
+        -- Markdown
+        marksman = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -597,6 +600,9 @@ require('lazy').setup({
           'ruff',
           'pyright',
           'debugpy',
+          'markdown-toc',
+          'markdownlint',
+          'markdownlint-cli2',
         },
       }
 
