@@ -9,5 +9,6 @@ return {
   },
   keys = {
     { '<leader>cc', '<cmd>Coverage<cr>', desc = 'Code coverage' },
+    { '<leader>cs', '<cmd>CoverageSummary<cr>', desc = 'Code coverage summary' },
   },
 }
