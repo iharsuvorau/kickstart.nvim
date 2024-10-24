@@ -136,6 +136,23 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Elixir keymaps for Neovim
+
+-- Compile the current file
+vim.keymap.set('n', '<leader>ec', ':w<CR>:!elixirc %<CR>', { noremap = true, silent = true, desc = 'Compile the file' })
+-- Run the current file
+vim.keymap.set('n', '<leader>er', ':w<CR>:!elixir %<CR>', { noremap = true, silent = true, desc = 'Run the file' })
+-- Run tests in the current file
+vim.keymap.set('n', '<leader>et', ':!mix test %<CR>', { noremap = true, silent = true, desc = 'Test the file' })
+-- Run all tests
+vim.keymap.set('n', '<leader>ea', ':!mix test<CR>', { noremap = true, silent = true, desc = 'Test all' })
+-- Format the current file
+vim.keymap.set('n', '<leader>ef', ':!mix format %<CR>', { noremap = true, silent = true, desc = 'Format the file' })
+-- Navigate to the next function
+vim.keymap.set('n', '<leader>en', ':call search("^defp\\|^def\\|^defmodule")<CR>', { noremap = true, silent = true, desc = 'Next function' })
+-- Navigate to the previous function
+vim.keymap.set('n', '<leader>ep', ':call search("^defp\\|^def\\|^defmodule", "b")<CR>', { noremap = true, silent = true, desc = 'Previous function' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -611,6 +628,7 @@ require('lazy').setup({
           'markdown-toc',
           'markdownlint',
           'markdownlint-cli2',
+          'elixir-ls',
         },
       }
 
