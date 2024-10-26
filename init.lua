@@ -175,6 +175,18 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Run organize go imports on file save
+local gofile_au_group = vim.api.nvim_create_augroup('goimports-on-write', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = gofile_au_group,
+  pattern = '*.go',
+  callback = function()
+    vim.lsp.buf.code_action { context = { only = { 'source.organizeImports' } }, apply = true }
+    --vim.lsp.buf.code_action { context = { only = { 'source.fixAll' } }, apply = true }
+  end,
+  desc = 'Organize go imports on save',
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
