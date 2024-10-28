@@ -175,6 +175,18 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Run organize go imports on file save
+local gofile_au_group = vim.api.nvim_create_augroup('goimports-on-write', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = gofile_au_group,
+  pattern = '*.go',
+  callback = function()
+    vim.lsp.buf.code_action { context = { only = { 'source.organizeImports' } }, apply = true }
+    --vim.lsp.buf.code_action { context = { only = { 'source.fixAll' } }, apply = true }
+  end,
+  desc = 'Organize go imports on save',
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -825,7 +837,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-storm'
+      vim.cmd.colorscheme 'habamax'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -945,6 +957,8 @@ require('lazy').setup({
     },
   },
 })
+
+--require 'colors.lush_template'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
