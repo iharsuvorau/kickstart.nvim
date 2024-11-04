@@ -187,6 +187,13 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   desc = 'Organize go imports on save',
 })
 
+-- Set file type for Jinja2 files
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+  group = vim.api.nvim_create_augroup('jinja-on-open', { clear = true }),
+  pattern = { '*.jinja', '*.jinja2', '*.j2' },
+  command = 'set filetype=jinja',
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -606,6 +613,8 @@ require('lazy').setup({
         ts_ls = {},
         jsonls = {},
         --
+
+        jinja_lsp = {},
 
         lua_ls = {
           -- cmd = {...},
