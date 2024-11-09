@@ -668,12 +668,28 @@ require('lazy').setup({
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
+            -- print('Debug: server_name = ' .. server_name)
             local server = servers[server_name] or {}
+            -- print('Debug: server = ' .. vim.inspect(server))
+
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+
+            local lspconfig = require 'lspconfig'
+
+            -- Handle deprecated servers
+            if server_name == 'ruff_lsp' then
+              print 'Warning: ruff_lsp is deprecated, replacing it with ruff'
+              server_name = 'ruff'
+            end
+
+            if lspconfig[server_name] then
+              lspconfig[server_name].setup(server)
+            else
+              print('Error: LSP server ' .. server_name .. ' is not available in lspconfig')
+            end
           end,
         },
       }
