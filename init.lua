@@ -913,6 +913,11 @@ require('lazy').setup({
         'json',
         'typescript',
         'xml',
+        'eex',
+        'heex',
+        'elixir',
+        'erlang',
+        'surface',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
