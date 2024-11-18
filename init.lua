@@ -175,6 +175,16 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.expandtab = true
+  end,
+})
+
 -- Run organize go imports on file save
 local gofile_au_group = vim.api.nvim_create_augroup('goimports-on-write', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePre', {
