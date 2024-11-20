@@ -1,6 +1,18 @@
 return {
-  'olrtg/nvim-emmet',
+  'mattn/emmet-vim',
   config = function()
-    vim.keymap.set({ 'n', 'v' }, '<leader>ee', require('nvim-emmet').wrap_with_abbreviation)
+    vim.g.user_emmet_settings = {
+      elixir = {
+        extends = 'html',
+      },
+      heex = {
+        extends = 'html',
+      },
+      eelixir = {
+        extends = 'html',
+      },
+    }
+    vim.g.user_emmet_mode = 'a'
+    vim.g.user_emmet_leader_key = '<C-y>'
   end,
 }
