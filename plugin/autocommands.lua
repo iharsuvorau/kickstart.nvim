@@ -12,14 +12,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup('filetype-specific-settings', { clear = true }),
-  pattern = { 'norg' },
-  callback = function()
-    vim.opt_local.textwidth = 80
-  end,
-})
-
-vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
   callback = function()
     vim.opt_local.shiftwidth = 2
