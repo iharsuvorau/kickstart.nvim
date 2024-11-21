@@ -9,19 +9,21 @@ return {
     build = 'make tiktoken', -- Only on MacOS or Linux
     opts = {
       debug = true, -- Enable debugging
-      -- See Configuration section for rest
+      window = {
+        width = 0.3,
+      },
     },
     -- See Commands section for default commands if you want to lazy load on them
     keys = {
       {
-        '<leader>ctt',
+        '<leader>aa',
         function()
           require('CopilotChat').open()
         end,
         desc = 'CopilotChat - Open',
       },
       {
-        '<leader>ctq',
+        '<leader>aq',
         function()
           local input = vim.fn.input 'Quick Chat: '
           if input ~= '' then
@@ -31,7 +33,7 @@ return {
         desc = 'CopilotChat - Quick chat',
       },
       {
-        '<leader>ctp',
+        '<leader>ap',
         function()
           local actions = require 'CopilotChat.actions'
           require('CopilotChat.integrations.telescope').pick(actions.prompt_actions())
