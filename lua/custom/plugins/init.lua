@@ -4,7 +4,7 @@
 -- See the kickstart.nvim README for more information
 return {
   {
-    dir = vim.fn.stdpath 'config' .. 'lua/github-opener',
+    dir = vim.fn.stdpath 'config' .. '/lua',
     name = 'github-opener',
     config = function()
       require 'github-opener'
