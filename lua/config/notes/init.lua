@@ -229,14 +229,15 @@ local function setup_commands(config)
   vim.api.nvim_create_user_command('NotesGrep', function()
     vim.cmd(string.format('lua vim.keymap.set("%s")', config.keymaps.grep_notes))
   end, { desc = 'Search notes content' })
+
+  vim.api.nvim_create_user_command('NotesCreateDirs', function()
+    create_directories(config)
+  end, { desc = 'Create notes directories' })
 end
 
 -- Main setup function
 function M.setup(opts)
   local config = vim.tbl_deep_extend('force', default_config, opts or {})
-
-  -- Ensure all directories exist
-  create_directories(config)
 
   -- Setup keymaps and commands
   setup_keymaps(config)
