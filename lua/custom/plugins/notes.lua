@@ -1,5 +1,6 @@
 return {
-  dir = vim.fn.stdpath 'config' .. '/lua/config/notes',
+  dir = vim.fn.stdpath 'config' .. '/lua',
+  name = 'notes',
   event = 'VeryLazy',
   dependencies = {
     'nvim-telescope/telescope.nvim',
@@ -22,6 +23,6 @@ return {
     'NotesGrep',
   },
   config = function()
-    require('config.notes').setup()
+    require('notes').setup()
   end,
 }

@@ -43,6 +43,3 @@ require('lazy').setup({ import = 'custom/plugins' }, {
     },
   },
 })
-
---require 'colors.lush_template'
---require 'custom.plugins.notes'
