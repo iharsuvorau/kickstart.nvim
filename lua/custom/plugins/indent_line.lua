@@ -5,7 +5,7 @@ return {
     -- See `:help ibl`
     main = 'ibl',
     opts = {
-      enabled = false,
+      enabled = true,
     },
   },
 }
