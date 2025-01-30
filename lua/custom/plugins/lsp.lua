@@ -14,8 +14,20 @@ return {
 
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
+
+      -- Symbol navigation in a pop-up window
+      {
+        'SmiteshP/nvim-navbuddy',
+        dependencies = {
+          'SmiteshP/nvim-navic',
+          'MunifTanjim/nui.nvim',
+        },
+        opts = { lsp = { auto_attach = true } },
+      },
     },
     config = function()
+      vim.keymap.set('n', '<leader>p', '<cmd>Navbuddy<cr>', { desc = 'Open symbols' })
+
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
         callback = function(event)
