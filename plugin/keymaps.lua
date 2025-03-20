@@ -37,3 +37,8 @@ vim.keymap.set('n', '<leader>ea', ':!mix test<CR>', { noremap = true, silent = t
 vim.keymap.set('n', '<leader>ef', ':!mix format %<CR>', { noremap = true, silent = true, desc = 'Format the file' })
 vim.keymap.set('n', '<leader>en', ':call search("^defp\\|^def\\|^defmodule")<CR>', { noremap = true, silent = true, desc = 'Next function' })
 vim.keymap.set('n', '<leader>ep', ':call search("^defp\\|^def\\|^defmodule", "b")<CR>', { noremap = true, silent = true, desc = 'Previous function' })
+
+-- Go
+vim.keymap.set('n', '<space>td', function()
+  require('dap-go').debug_test()
+end, { buffer = 0 })
