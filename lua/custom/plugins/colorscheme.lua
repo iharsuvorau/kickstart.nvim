@@ -1,10 +1,11 @@
 return {
   {
-    'rafi/awesome-vim-colorschemes',
+    'mikesmithgh/gruvsquirrel.nvim',
     lazy = false,
     priority = 1000,
+    opts = {},
     config = function()
-      vim.cmd.colorscheme 'tender'
+      vim.cmd.colorscheme 'gruvsquirrel'
     end,
   },
 }
