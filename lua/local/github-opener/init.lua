@@ -1,3 +1,4 @@
+print 'github-opener module loaded'
 local M = {}
 
 local function get_command_output(cmd)
