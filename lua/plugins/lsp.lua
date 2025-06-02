@@ -232,6 +232,7 @@ return {
           'lua_ls',
           'tailwindcss',
           'rust_analyzer',
+          'zls',
         },
       }
 
